@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <input id="urlInput" type="text" placeholder="Vimeo URL">
+        <button id="downloadBtn">Download</button>
+    </form>
+    <script>
+    const urlInput = document.getElementById('urlInput');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    downloadBtn.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        httpGetAsync(urlInput.value, findImage);
+    });
+
+    function findImage(image) {
+        console.log(image);
+    }
+
+    function httpGetAsync(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open('GET', theUrl, true);
+        xmlHttp.send(null);
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                callback(xmlHttp.responseText);
+            }
+        }
+
+    }
+
+
+    // function makeHttpObject() {
+    //     try { return new XMLHttpRequest(); } catch (error) {}
+    //     try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (error) {}
+    //     try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (error) {}
+    //     throw new Error("Could not create HTTP request object.");
+    // }
+
+    // var xmlHttp = makeHttpObject();
+    // xmlHttp.open("GET", "your_url", true);
+    // xmlHttp.send(null);
+
+    // xmlHttp.onreadystatechange = function() {
+    //     if (xmlHttp.readyState == 4)
+    //         callback(xmlHttp.responseText);
+    // };
+
+    </script>
+</body>
+
+</html>
+<!-- <iframe src="https://player.vimeo.com/video/398274283" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
+<!-- <p><a href="https://vimeo.com/398274283">VERT</a> from <a href="https://vimeo.com/katecox">Kate Cox</a> on <a href="https://vimeo.com">Vimeo</a>.</p> -->
