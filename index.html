@@ -20,8 +20,10 @@
         httpGetAsync(urlInput.value, findImage);
     });
 
-    function findImage(image) {
-        console.log(image);
+    function findImage(str) {
+        const start = str.search('thumb.src = "');
+        const url = str.slice(start, (start + 55));
+        console.log('url', url);
     }
 
     function httpGetAsync(theUrl, callback) {
@@ -33,29 +35,11 @@
                 callback(xmlHttp.responseText);
             }
         }
-
     }
-
-
-    // function makeHttpObject() {
-    //     try { return new XMLHttpRequest(); } catch (error) {}
-    //     try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (error) {}
-    //     try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (error) {}
-    //     throw new Error("Could not create HTTP request object.");
-    // }
-
-    // var xmlHttp = makeHttpObject();
-    // xmlHttp.open("GET", "your_url", true);
-    // xmlHttp.send(null);
-
-    // xmlHttp.onreadystatechange = function() {
-    //     if (xmlHttp.readyState == 4)
-    //         callback(xmlHttp.responseText);
-    // };
 
     </script>
 </body>
 
 </html>
-<!-- <iframe src="https://player.vimeo.com/video/398274283" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe> -->
-<!-- <p><a href="https://vimeo.com/398274283">VERT</a> from <a href="https://vimeo.com/katecox">Kate Cox</a> on <a href="https://vimeo.com">Vimeo</a>.</p> -->
+<!-- https://player.vimeo.com/video/398274283 -->
+<!-- https://i.vimeocdn.com/video/865978829.jpg -->
